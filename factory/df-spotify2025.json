@@ -1,0 +1,9 @@
+{
+	"name": "df-spotify2025",
+	"location": "canadacentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "7c74b6af-dd10-4c87-b605-77a74a56bc82",
+		"tenantId": "7badbf71-d81b-4a51-b059-cd45be590751"
+	}
+}

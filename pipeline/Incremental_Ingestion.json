@@ -36,6 +36,8 @@
 			{
 				"name": "Last_cdc",
 				"type": "Lookup",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -59,7 +61,12 @@
 					},
 					"dataset": {
 						"referenceName": "Json_dynamics",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"container": "bronze",
+							"folder": "cdc",
+							"file": "cdc.json"
+						}
 					}
 				}
 			}

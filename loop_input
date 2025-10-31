@@ -1,33 +1,61 @@
-[
-  {
-      "schema":"dbo",
-      "table":"DimUser",
-      "cdc_col":"updated_at",
-      "from_date":""
-  },
-    {
-      "schema":"dbo",
-      "table":"DimTrack",
-      "cdc_col":"updated_at",
-      "from_date":""
-  },
-    {
-      "schema":"dbo",
-      "table":"DimArtist",
-      "cdc_col":"updated_at",
-      "from_date":""
-  },
-    {
-      "schema":"dbo",
-      "table":"DimDate",
-      "cdc_col":"updated_at",
-      "from_date":""
-  },
-{
-      "schema":"dbo",
-      "table":"FactStream",
-      "cdc_col":"updated_at",
-      "from_date":""
-  },
-]
+The code you inserted is **not valid JSON** because you have an extra **trailing comma (`,`)** after the last element in the array.
 
+A trailing comma is not allowed after the final item in a JSON array or object.
+
+-----
+
+## ❌ The Error
+
+The error is on this line:
+
+```json
+{
+      "schema":"dbo",
+      "table":"FactStream",
+      "cdc_col":"updated_at",
+      "from_date":""
+  }, <--- THIS COMMA IS THE PROBLEM
+]
+```
+
+This comma is trying to separate the last object from another object that doesn't exist before the closing bracket (`]`). The parser stops when it hits this comma and expects another object, but finds the closing bracket instead, throwing a "valid array" error.
+
+-----
+
+## ✅ The Fix
+
+To make the JSON valid, simply **remove the comma** after the last curly brace of the final object:
+
+```json
+[
+  {
+      "schema":"dbo",
+      "table":"DimUser",
+      "cdc_col":"updated_at",
+      "from_date":""
+  },
+    {
+      "schema":"dbo",
+      "table":"DimTrack",
+      "cdc_col":"updated_at",
+      "from_date":""
+  },
+    {
+      "schema":"dbo",
+      "table":"DimArtist",
+      "cdc_col":"updated_at",
+      "from_date":""
+  },
+    {
+      "schema":"dbo",
+      "table":"DimDate",
+      "cdc_col":"updated_at",
+      "from_date":""
+  },
+  {
+      "schema":"dbo",
+      "table":"FactStream",
+      "cdc_col":"updated_at",
+      "from_date":""
+  }
+]
